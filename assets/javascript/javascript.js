@@ -1,23 +1,20 @@
-var topics = ["cumulus", "cumulonimbus", "cumulostratus", "nimbus", "altocumulus", "altostratus", "cirrus", "cirrostratus", "cirrocumulus", "undulatus asparatus"],
+      // Initial array of clouds
+      var clouds = ["cumulus", "cumulonimbus", "cumulostratus", "nimbus", "altocumulus", "altostratus", "cirrus", "cirrostratus", "cirrocumulus", "undulatus asparatus"];
 
+      // displayCloudInfo function re-renders the HTML to display the appropriate content
+      function displayCloudInfo() {
 
-      // Initial array of movies
-      var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
+        var cloud = $(this).attr("data-name");
+        var queryURL = "https://www.omdbapi.com/?t=" + cloud + "&y=&plot=short&apikey=trilogy";
 
-      // displayMovieInfo function re-renders the HTML to display the appropriate content
-      function displayMovieInfo() {
-
-        var movie = $(this).attr("data-name");
-        var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
-
-        // Creating an AJAX call for the specific movie button being clicked
+        // Creating an AJAX call for the specific cloud button being clicked
         $.ajax({
           url: queryURL,
           method: "GET"
         }).then(function(response) {
 
-          // Creating a div to hold the movie
-          var movieDiv = $("<div class='movie'>");
+          // Creating a div to hold the cloud
+          var movieDiv = $("<div class='cloud'>");
 
           // Storing the rating data
           var rating = response.Rated;
@@ -55,51 +52,51 @@ var topics = ["cumulus", "cumulonimbus", "cumulostratus", "nimbus", "altocumulus
           // Appending the image
           movieDiv.append(image);
 
-          // Putting the entire movie above the previous movies
-          $("#movies-view").prepend(movieDiv);
+          // Putting the entire cloud above the previous clouds
+          $("#cloudcontainer").prepend(movieDiv);
         });
 
       }
 
-      // Function for displaying movie data
+      // Function for displaying cloud data
       function renderButtons() {
 
-        // Deleting the movies prior to adding new movies
+        // Deleting the clouds prior to adding new clouds
         // (this is necessary otherwise you will have repeat buttons)
-        $("#buttons-view").empty();
+        $("#buttonholder").empty();
 
-        // Looping through the array of movies
-        for (var i = 0; i < movies.length; i++) {
+        // Looping through the array of clouds
+        for (var i = 0; i < clouds.length; i++) {
 
-          // Then dynamicaly generating buttons for each movie in the array
+          // Then dynamicaly generating buttons for each cloud in the array
           // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
           var a = $("<button>");
-          // Adding a class of movie-btn to our button
-          a.addClass("movie-btn");
+          // Adding a class of cloud-btn to our button
+          a.addClass("cloud-btn");
           // Adding a data-attribute
-          a.attr("data-name", movies[i]);
+          a.attr("data-name", clouds[i]);
           // Providing the initial button text
-          a.text(movies[i]);
-          // Adding the button to the buttons-view div
-          $("#buttons-view").append(a);
+          a.text(clouds[i]);
+          // Adding the button to the buttonholder div
+          $("#buttonholder").append(a);
         }
       }
 
-      // This function handles events where a movie button is clicked
-      $("#add-movie").on("click", function(event) {
+      // This function handles events where a cloud button is clicked
+      $("#add-clouds").on("click", function(event) {
         event.preventDefault();
         // This line grabs the input from the textbox
-        var movie = $("#movie-input").val().trim();
+        var cloud = $("#cloudyinput").val().trim();
 
-        // Adding movie from the textbox to our array
-        movies.push(movie);
+        // Adding cloud from the textbox to our array
+        clouds.push(cloud);
 
-        // Calling renderButtons which handles the processing of our movie array
+        // Calling renderButtons which handles the processing of our cloud array
         renderButtons();
       });
 
-      // Adding a click event listener to all elements with a class of "movie-btn"
-      $(document).on("click", ".movie-btn", displayMovieInfo);
+      // Adding a click event listener to all elements with a class of "cloud-btn"
+      $(document).on("click", ".cloud-btn", displayCloudInfo);
 
       // Calling the renderButtons function to display the intial buttons
       renderButtons();
