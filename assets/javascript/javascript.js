@@ -5,7 +5,7 @@
       function displayCloudInfo() {
 
         var cloud = $(this).attr("data-name");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + cloud + "&api_key=dc6zaTOxFJmzC";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + cloud + "&api_key=dc6zaTOxFJmzC&limit=10";
 //        https://api.giphy.com/v1/gifs/search?q=cloud&api_key=dc6zaTOxFJmzC&limit=10
 
         // Creating an AJAX call for the specific cloud button being clicked
@@ -22,58 +22,18 @@
           // Looping through each result item
           for (var i = 0; i < results.length; i++) {
 
-              // Creating a div to hold the cloud
-              var cloudDiv = $("<div class='cloud'>");
-
-                          // Creating a paragraph tag with the result item's rating
-                          var p = $("<p>").text("Rating: " + results[i].rating);
-                          // Creating and storing an image tag
-                          var cloudImage = $("<img>");
-                          // Setting the src attribute of the image to a property pulled off the result item
-                          cloudImage.attr("src", results[i].images.fixed_height.url);
-
-                          // Appending the paragraph and image tag to the cloudDiv
-                          cloudDiv.append(p);
-                          cloudDiv.append(cloudImage);
+            // Creating a div to hold the cloud
+            var cloudDiv = $("<div class='cloud'>");
+            // Creating a paragraph tag with the result item's rating
+            var p = $("<p>").text("Rating: " + results[i].rating);
+            // Creating and storing an image tag
+            var cloudImage = $("<img>");
+            // Setting the src attribute of the image to a property pulled off the result item
+            cloudImage.attr("src", results[i].images.fixed_height.url);
+            // Appending the paragraph and image tag to the cloudDiv
+            cloudDiv.append(p);
+            cloudDiv.append(cloudImage);
           }
-
-              // // Retrieving the URL for the image
-              // var imgURL = response.data.url;
-              // //    console.log(imgURL);
-
-              // // Creating an element to hold the image
-              // var image = $("<img>").attr("src", imgURL);
-
-              // // Appending the image
-              // cloudDiv.append(image);
-
-
-              // // Storing the rating data
-              // var rating = response.rating;
-
-              // // Creating an element to have the rating displayed
-              // var pOne = $("<p>").text("Rating: " + rating);
-
-              // // Displaying the rating
-              // cloudDiv.append(pOne);
-
-              // // Storing the release year
-              // var released = response.Released;
-
-              // // Creating an element to hold the release year
-              // var pTwo = $("<p>").text("Released: " + released);
-
-              // // Displaying the release year
-              // cloudDiv.append(pTwo);
-
-              // // Storing the plot
-              // var plot = response.Plot;
-
-              // // Creating an element to hold the plot
-              // var pThree = $("<p>").text("Plot: " + plot);
-
-              // // Appending the plot
-              // cloudDiv.append(pThree);
 
 
           // Putting the entire cloud above the previous clouds
