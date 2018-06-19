@@ -3,16 +3,15 @@ body {
 }
 
 
-#tolkienbox {
-        background-color: #ffffff;
+#cloudbox {
         width: 50%; 
         height: auto;
         margin: 2% 25% 10% 25%;
-        color: #f3e62f;
+        color: #18494d;
         padding: 0 15px 15px 15px;
         border-style: solid;
         border-width: 10px;
-        border-color: #eec926;
+        border-color:  #18494d;
         position: absolute;
         line-height: 25px;
     }

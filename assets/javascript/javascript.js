@@ -14,7 +14,7 @@
         }).then(function(response) {
 
           // Creating a div to hold the cloud
-          var movieDiv = $("<div class='cloud'>");
+          var cloudDiv = $("<div class='cloud'>");
 
           // Storing the rating data
           var rating = response.Rated;
@@ -23,7 +23,7 @@
           var pOne = $("<p>").text("Rating: " + rating);
 
           // Displaying the rating
-          movieDiv.append(pOne);
+          cloudDiv.append(pOne);
 
           // Storing the release year
           var released = response.Released;
@@ -32,7 +32,7 @@
           var pTwo = $("<p>").text("Released: " + released);
 
           // Displaying the release year
-          movieDiv.append(pTwo);
+          cloudDiv.append(pTwo);
 
           // Storing the plot
           var plot = response.Plot;
@@ -41,7 +41,7 @@
           var pThree = $("<p>").text("Plot: " + plot);
 
           // Appending the plot
-          movieDiv.append(pThree);
+          cloudDiv.append(pThree);
 
           // Retrieving the URL for the image
           var imgURL = response.Poster;
@@ -50,10 +50,10 @@
           var image = $("<img>").attr("src", imgURL);
 
           // Appending the image
-          movieDiv.append(image);
+          cloudDiv.append(image);
 
           // Putting the entire cloud above the previous clouds
-          $("#cloudcontainer").prepend(movieDiv);
+          $("#cloudcontainer").prepend(cloudDiv);
         });
 
       }
