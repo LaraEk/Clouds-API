@@ -20,13 +20,57 @@ img {
     width: auto;
 }
 
-#show-number {
-    background-color: #eec926;
-    margin: 5% 40% 5% 40%;
-    color: #83640e;
-    border-style: double;
+button {
+    background-color:  #18494d;
+    border: double;
+    border-width: 5px;
+    color: rgb(250, 231, 231);
+    padding: 4px 10px;
     text-align: center;
+    display: inline-block;
+    font-family: 'Inknut Antiqua';
+    font-size: 10px;
+}
+
+hr {
+    height: 3px;
+    width: 90%;
+    color:  #18494d;
+    background-color: #18494d;
+    border: none;
+    }
+
+#cloudcontainer {
+    text-align: center;
+    color: #18494d;
+    margin: 2.5% 5% 2.5% 5%;
+    border-style: groove;
+    border-width: 2px;
+    border-color:  #18494d;
+}
+
+.cloud {
+    text-align: center;
+    color: #18494d;
+    margin: 5% 20% 5% 20%;
+    border-style: dotted;
     border-width: 3px;
-    border-radius: 5px;
-    position: relative;
+    border-color:  #18494d;
+
+}
+
+#add-clouds {
+    background-color:  #26818a;
+    border: double;
+    border-width: 5px;
+    color: rgb(250, 231, 231);
+    padding: 4px 10px;
+    text-align: center;
+    display: inline-block;
+    font-family: 'Inknut Antiqua';
+    font-size: 10px;
+}
+
+input[type=text] {
+    background-color: rgb(248, 240, 240);
 }
