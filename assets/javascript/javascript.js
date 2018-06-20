@@ -1,11 +1,11 @@
       // Initial array of clouds
-      var clouds = ["puffy cloud", "pretty cloud", "cumulus", "cumulonimbus", "cumulostratus", "nimbus", "altocumulus", "altostratus", "cirrus", "cirrostratus", "cirrocumulus", "undulatus asparatus"];
+      var clouds = ["puffy cloud", "pretty cloud", "cumulus", "cumulonimbus", "cumulostratus", "nimbus", "altocumulus", "altostratus", "cirrus", "cirrostratus", "cirrocumulus", "undulatus asparatus", "noctilucent", "iridescent clouds", "thunderheads", "supercell", "thunderstorm", "clouds from plane window", "rainbow clouds","cloud and sephiroth"];
 
       // displayCloudInfo function re-renders the HTML to display the appropriate content
       function displayCloudInfo() {
 
         var cloud = $(this).attr("data-name");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + cloud + "&api_key=dc6zaTOxFJmzC&limit=10";
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + cloud + "&api_key=dc6zaTOxFJmzC&limit=10";
 //        https://api.giphy.com/v1/gifs/search?q=cloud&api_key=dc6zaTOxFJmzC&limit=10
 
         // Creating an AJAX call for the specific cloud button being clicked
@@ -14,16 +14,16 @@
           method: "GET"
         }).then(function(response) {
           console.log(queryURL);
+            // Creating a div to hold the cloud
+            var cloudDiv = $("<div class='cloud'>");
 
           console.log(response);
           // storing the data from the AJAX request in the results variable
           var results = response.data;
+          console.log(results.length);
 
           // Looping through each result item
           for (var i = 0; i < results.length; i++) {
-
-            // Creating a div to hold the cloud
-            var cloudDiv = $("<div class='cloud'>");
             // Creating a paragraph tag with the result item's rating
             var p = $("<p>").text("Rating: " + results[i].rating);
             // Creating and storing an image tag
